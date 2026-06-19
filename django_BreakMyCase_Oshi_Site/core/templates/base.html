@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}BREAK MY CASE{% endblock %}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body class="{% block body_class %}page-home{% endblock %}">
+
+<header class="site-header">
+
+    <a href="{% url 'home' %}" class="logo">
+        <img src="{% static 'images/logo.png' %}" alt="BREAK MY CASE logo">
+    </a>
+
+    <button class="hamburger" id="hamburgerBtn" aria-label="メニューを開く">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <a href="{% url 'home' %}" class="brand-title">
+        <span class="brand-sub">your memory is always bright</span>
+        <span class="brand-main">BREAK MY CASE</span>
+    </a>
+
+</header>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<aside class="sidebar" id="sidebar">
+
+    <button class="sidebar-close" id="sidebarClose" aria-label="メニューを閉じる">
+        <span></span>
+        <span></span>
+    </button>
+
+    <nav class="sidebar-menu">
+
+        <a href="{% url 'home' %}" class="sidebar-item">HOME</a>
+
+        <div class="sidebar-group">
+            <a href="{% url 'schedule_list' %}" class="sidebar-item">SCHEDULE</a>
+            <div class="sidebar-submenu">
+                <a href="#">Update</a>
+                <a href="#">Delete</a>
+            </div>
+        </div>
+
+        <div class="sidebar-group">
+            <a href="{% url 'memo_list' %}" class="sidebar-item">MEMO</a>
+            <div class="sidebar-submenu">
+                <a href="#">Update</a>
+                <a href="#">Delete</a>
+            </div>
+        </div>
+
+        <div class="sidebar-group">
+            <a href="{% url 'memory_list' %}" class="sidebar-item">MEMORY</a>
+            <div class="sidebar-submenu">
+                <a href="#">Update</a>
+                <a href="#">Delete</a>
+            </div>
+        </div>
+
+    </nav>
+
+</aside>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<script src="{% static 'js/script.js' %}"></script>
+
+</body>
+</html>
