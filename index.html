@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BREAK MY CASE</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="page-home">
+
+  <header class="site-header">
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="BREAK MY CASE logo">
+    </a>
+
+    <button class="hamburger" id="hamburgerBtn" aria-label="メニューを開く">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <a href="index.html" class="brand-title">
+      <span class="brand-sub">your memory is always bright</span>
+      <span class="brand-main">BREAK MY CASE</span>
+    </a>
+  </header>
+
+  <!-- サイドバー外側の暗い範囲 -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- サイドバー -->
+  <aside class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="sidebarClose" aria-label="メニューを閉じる">
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="sidebar-menu">
+      <a href="index.html" class="sidebar-item">HOME</a>
+
+      <div class="sidebar-group">
+        <a href="schedule.html" class="sidebar-item">SCHEDULE</a>
+        <div class="sidebar-submenu">
+          <a href="schedule-update.html">Update</a>
+          <a href="schedule-delete.html">Delete</a>
+        </div>
+      </div>
+
+      <div class="sidebar-group">
+        <a href="memo.html" class="sidebar-item">MEMO</a>
+        <div class="sidebar-submenu">
+          <a href="memo-update.html">Update</a>
+          <a href="memo-delete.html">Delete</a>
+        </div>
+      </div>
+
+      <div class="sidebar-group">
+        <a href="memory.html" class="sidebar-item">MEMORY</a>
+        <div class="sidebar-submenu">
+          <a href="memory-update.html">Update</a>
+          <a href="memory-delete.html">Delete</a>
+        </div>
+      </div>
+    </nav>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>
