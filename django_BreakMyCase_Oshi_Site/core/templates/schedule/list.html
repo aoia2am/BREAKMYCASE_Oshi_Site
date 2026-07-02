@@ -5,4 +5,137 @@
 {% block body_class %}page-schedule{% endblock %}
 
 {% block content %}
+
+<div class="schedule-bg-deco">
+    <div class="deco-line deco-line-left-1"></div>
+    <div class="deco-line deco-line-left-2"></div>
+
+    <div class="deco-line deco-line-top"></div>
+
+    <div class="deco-line deco-line-right-1"></div>
+    <div class="deco-line deco-line-right-2"></div>
+
+    <div class="deco-line deco-line-bottom-left-1"></div>
+    <div class="deco-line deco-line-bottom-left-2"></div>
+
+    <div class="deco-dots-square">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+
+    </div>
+    <div class="deco-dots-circle"></div>
+</div>
+
+<div class="page-subtitle">
+    schedule
+</div>
+
+<section class="schedule-page">
+
+    <div class="schedule-card">
+        <ul class="schedule-list">
+            <li>
+                <span class="schedule-date">2026.05.07</span>
+                <span class="schedule-title">NIGHT HIKE @Shibuya</span>
+            </li>
+            <li>
+                <span class="schedule-date">2026.05.07</span>
+                <span class="schedule-title">先着申込</span>
+            </li>
+            <li>
+                <span class="schedule-date">2026.05.07</span>
+                <span class="schedule-title">セブンネット予約開始</span>
+            </li>
+            <li>
+                <span class="schedule-date">2026.05.07</span>
+                <span class="schedule-title">セブンネットプリ開始</span>
+            </li>
+            <li>
+                <span class="schedule-date">2026.05.07</span>
+                <span class="schedule-title">二周年グッズストア</span>
+            </li>
+            <li>
+                <span class="schedule-date">2026.05.07</span>
+                <span class="schedule-title">NITE HIKE@Shibuya</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="schedule-action-buttons">
+        <a href="#" class="schedule-action-button update">Update</a>
+        <a href="#" class="schedule-action-button delete">Delete</a>
+    </div>
+
+    <div class="schedule-panel-overlay" id="schedulePanelOverlay"></div>
+
+    <div class="schedule-update-panel" id="scheduleUpdatePanel">
+        <form class="schedule-update-form">
+
+            <div class="schedule-date-row">
+                <input
+                    type="date"
+                    class="schedule-input schedule-date-input"
+                    value="2026-05-09"
+                >
+
+                <div class="schedule-time-control-row">
+                    <div class="schedule-time-toggle">
+                        <label>
+                            <input type="radio" name="time_type" value="all_day" checked>
+                            <span>終日</span>
+                        </label>
+
+                        <label>
+                            <input type="radio" name="time_type" value="time">
+                            <span>時間指定</span>
+                        </label>
+                    </div>
+
+                    <div class="schedule-time-row" id="scheduleTimeRow">
+                        <input type="time" class="schedule-time-input">
+                        <span>〜</span>
+                        <input type="time" class="schedule-time-input">
+                    </div>
+                </div>
+            </div>
+
+            <input
+                type="text"
+                class="schedule-input"
+                placeholder="イベント名"
+                maxlength="100"
+            >
+
+            <div class="schedule-category">
+                <label>
+                    <input type="radio" name="category" value="event" checked>
+                    <span>Event</span>
+                </label>
+
+                <span class="category-slash">/</span>
+
+                <label>
+                    <input type="radio" name="category" value="todo">
+                    <span>Todo</span>
+                </label>
+            </div>
+
+            <textarea
+                class="schedule-textarea"
+                placeholder="申込方法、持ち物など"
+                maxlength="200"
+            ></textarea>
+
+            <button type="button" class="schedule-submit-button">
+                Update
+            </button>
+
+        </form>
+    </div>
+
+</section>
+
 {% endblock %}

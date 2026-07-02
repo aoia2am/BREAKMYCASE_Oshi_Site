@@ -1,5 +1,4 @@
 :root {
-  --text-brown: #bba997;
   --text-cream: #ffe6cc;
   --text-orange: #dbad7e;
   --text-white: #f8f0e7;
@@ -10,7 +9,17 @@
 
   --font-serif: "The Youngest Serif", serif;
   --font-gothic: "Sawarabi Gothic", sans-serif;
+  --font-jp:
+    "DNP 秀英角ゴシック金 Std",
+    "Sawarabi Gothic",
+    sans-serif;
+
+  --glow-gold: #c2966b;
 }
+
+/* =========================
+   RESET / BASE
+========================= */
 
 * {
   margin: 0;
@@ -25,6 +34,15 @@ body {
   font-family: var(--font-gothic);
 }
 
+html {
+  min-height: 100%;
+  background: #482469;
+}
+
+/* =========================
+   PAGE BACKGROUND
+========================= */
+
 .page-home {
   background: linear-gradient(
     180deg,
@@ -32,8 +50,38 @@ body {
     var(--home-bg-2) 55%,
     var(--home-bg-3) 100%
   );
+  background-attachment: fixed;
 }
 
+.page-schedule {
+  background: linear-gradient(
+    180deg,
+    #482469 0%,
+    #423080 55%,
+    #3fad8c 100%
+  );
+  background-attachment: fixed;
+}
+
+.page-memo {
+  background: linear-gradient(
+    180deg,
+    #482469 0%,
+    #423080 55%,
+    #b25c88 100%
+  );
+  background-attachment: fixed;
+}
+
+.page-memory {
+  background: linear-gradient(
+    180deg,
+    #482469 0%,
+    #423080 55%,
+    #5e5cb2 100%
+  );
+  background-attachment: fixed;
+}
 /* =========================
    HEADER
 ========================= */
@@ -43,6 +91,10 @@ body {
   width: 100%;
   height: 240px;
 }
+
+/* =========================
+   LOGO
+========================= */
 
 .logo {
   position: absolute;
@@ -60,6 +112,10 @@ body {
   display: block;
   object-fit: contain;
 }
+
+/* =========================
+   HAMBURGER
+========================= */
 
 .hamburger {
   position: absolute;
@@ -79,7 +135,7 @@ body {
   height: 1px;
   background-color: #ffffff;
   opacity: 0.7;
-  transition: 0.3s;
+  transition: opacity 0.3s ease;
 }
 
 .hamburger span:nth-child(1) {
@@ -108,7 +164,8 @@ body {
 .brand-title {
   position: absolute;
   top: 67px;
-  left: 434px;
+  left: 50%;
+  transform: translateX(-50%);
 
   display: flex;
   flex-direction: column;
@@ -119,88 +176,436 @@ body {
 }
 
 .brand-sub {
-  color: #dbad7e;
-  font-family:
-    "DNP 秀英角ゴシック金 Std",
-    "Sawarabi Gothic",
-    sans-serif;
+  color: var(--text-orange);
+  font-family: var(--font-jp);
   font-size: 12pt;
   line-height: 1;
+  text-align: center;
 }
 
 .brand-main {
-  animation: glow 4s ease-in-out infinite;
-
   margin-top: 14pt;
+
   color: #fff0e0;
-  font-family: "The Youngest Serif", serif;
+  font-family: var(--font-serif);
   font-size: 52.2pt;
   line-height: 1;
   text-align: center;
   white-space: nowrap;
+
   text-shadow:
-  0 0 5px #c2966b,
-  0 0 10px #c2966b,
-  0 0 20px #c2966b;
-  filter: drop-shadow()
-}
-@keyframes glow {
-  0%, 100% {
-    text-shadow:
-      0 0 5px #c2966b,
-      0 0 10px #c2966b,
-      0 0 20px #c2966b,
-      0 0 40px #c2966b;
-  }
+    0 0 5px var(--glow-gold),
+    0 0 10px var(--glow-gold),
+    0 0 20px var(--glow-gold);
 
-  50% {
-    text-shadow:
-      0 0 8px #c2966b,
-      0 0 16px #c2966b,
-      0 0 32px #c2966b,
-      0 0 60px #c2966b;
-  }
+  animation: glow 4s ease-in-out infinite;
 }
 
-/* HOMEだけ間隔89pt */
+/* HOMEだけブランドタイトル間隔を広げる */
 .page-home .brand-main {
   margin-top: 89pt;
 }
 
-/* MEMORYだけ間隔14pt */
-.page-memory .brand-main {
-  margin-top: 14pt;
+@keyframes glow {
+  0%,
+  100% {
+    text-shadow:
+      0 0 5px var(--glow-gold),
+      0 0 10px var(--glow-gold),
+      0 0 20px var(--glow-gold),
+      0 0 40px var(--glow-gold);
+  }
+
+  50% {
+    text-shadow:
+      0 0 8px var(--glow-gold),
+      0 0 16px var(--glow-gold),
+      0 0 32px var(--glow-gold),
+      0 0 60px var(--glow-gold);
+  }
 }
 
 /* =========================
-   PAGE BACKGROUND
+   PAGE SUBTITLE
 ========================= */
 
-.page-memory {
-  background: linear-gradient(
-    180deg,
-    #482469 0%,
-    #423080 55%,
-    #5e5cb2 100%
-  );
+.page-subtitle {
+  position: absolute;
+  top: 180px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  color: var(--text-cream);
+  font-family: var(--font-serif);
+  font-size: 16px;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+
+  z-index: 10;
 }
 
-.page-schedule {
-  background: linear-gradient(
-    180deg,
-    #482469 0%,
-    #423080 55%,
-    #3fad8c 100%
-  );
+/* =========================
+   SCHEDULE BACKGROUND DECORATION
+========================= */
+
+.schedule-bg-deco {
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+  z-index: 0;
 }
 
-.page-memo {
-  background: linear-gradient(
-    180deg,
-    #482469 0%,
-    #423080 55%,
-    #b25c88 100%
-  );
+.deco-line {
+  position: absolute;
+
+  width: 260px;
+  height: 1px;
+
+  background: rgba(255, 230, 204, 0.45);
+
+  transform-origin: left center;
+}
+
+.deco-line-left-1 {
+  top: 125px;
+  left: 236.5px;
+
+  width: 300px;
+  height: 1px;
+  opacity: 0.5;
+  background: rgba(255, 255, 255, 0.5);
+
+  transform-origin: left center;
+  transform: rotate(141.7deg);
+}
+
+.deco-line-left-2 {
+  top: 209px;
+  left: 170.5px;
+  opacity: 0.5;
+  width: 210px;
+  height: 1px;
+
+  background: rgba(255, 255, 255, 0.5);
+
+  transform-origin: left center;
+  transform: rotate(141.7deg);
+}
+
+/* 上中央右の斜線 */
+.deco-line-top {
+  top: 69px;
+  left: 971px;
+
+  width: 155px;
+  height: 1px;
+
+  background: rgba(255, 255, 255, 0.5);
+
+  transform-origin: left center;
+  transform: rotate(-38.3deg);
+}
+
+.deco-line-right-1 {
+  top: 348px;
+  right: 74px;
+  opacity: 0.5;
+
+  width: 243.9px;
+  height: 1px;
+
+  background: rgba(255, 255, 255, 0.5);
+
+  transform-origin: right center;
+  transform: rotate(-38.3deg);
+}
+
+.deco-line-right-2 {
+  opacity: 0.5;
+  top: 314px;
+  right: 0;
+
+  width: 243.9px;
+  height: 1px;
+
+  background: rgba(255, 255, 255, 0.5);
+
+  transform-origin: right center;
+  transform: rotate(-38.3deg);
+}
+
+/* 左下の斜線 */
+.deco-line-bottom-left-1 {
+  right: 1007px;
+  bottom: 192.8px;
+
+  width: 243.9px;
+  height: 1px;
+
+  background: rgba(255, 255, 255, 0.5);
+
+  transform-origin: right center;
+  transform: rotate(-38.3deg);
+  opacity: 0.25;
+}
+
+.deco-line-bottom-left-2 {
+  right: 1032px;
+  bottom: 147.8px;
+
+  width: 243.9px;
+  height: 1px;
+
+  background: rgba(255, 255, 255, 0.5);
+
+  transform-origin: right center;
+  transform: rotate(-38.3deg);
+  opacity: 0.25;
+}
+
+/* 右上ドット四角 */
+.deco-dots-square {
+  position: absolute;
+
+  top: 142px;
+  right: 64px;
+
+  width: 187px;
+  height: 41.1px;
+
+  display: grid;
+  grid-template-columns: repeat(10, 11px);
+  grid-template-rows: repeat(2, 11px);
+
+  justify-content: space-between;
+  align-content: space-between;
+
+  opacity: 0.5;
+}
+
+.deco-dots-square span {
+  width: 11px;
+  height: 11px;
+
+  background: #ffffff;
+}
+
+/* 左下ドット円 */
+.deco-dots-circle {
+  position: absolute;
+
+  left: 38px;
+  bottom: 38px;
+
+  width: 115.3px;
+  height: 115.3px;
+
+  border: 4px dotted rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+
+  box-sizing: border-box;
+}
+
+/* =========================
+   SCHEDULE PAGE
+========================= */
+
+
+.page-schedule .page-subtitle {
+  top: 180px;
+}
+
+.schedule-page {
+  position: relative;
+  width: 100%;
+  min-height: 820px;
+}
+
+.schedule-card {
+  z-index: 1;
+  position: absolute;
+
+  /* schedule文字の下14px */
+  top: 0px;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 548px;
+  min-height: 520px;
+
+  padding: 26px 46px;
+
+  background: rgba(34, 22, 63, 0.78);
+  border-radius: 18px;
+}
+
+.schedule-list {
+  list-style: none;
+}
+
+.schedule-list li {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+
+  padding: 14px 30px 12px;
+
+  border-bottom: 1px solid rgba(255, 230, 204, 0.35);
+}
+
+.schedule-date {
+  color: #83c653;
+
+  font-family:
+    "DNP 秀英角ゴシック金 Std",
+    "Sawarabi Gothic",
+    sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.schedule-title {
+  color: #dbad7e;
+
+  font-family:
+    "DNP 秀英角ゴシック金 Std",
+    "Sawarabi Gothic",
+    sans-serif;
+  font-size: 24px;
+  white-space: nowrap;
+}
+
+/* 右下 Update / Delete */
+
+.schedule-action-buttons {
+  position: fixed;
+
+  right: 76px;
+  bottom: 56px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  z-index: 50;
+}
+
+.schedule-action-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 218px;
+  height: 58px;
+
+  color: #ffe6cc;
+
+  font-family:
+    "DNP 秀英角ゴシック金 Std",
+    "Sawarabi Gothic",
+    sans-serif;
+  font-size: 18px;
+
+  text-decoration: none;
+
+  box-shadow: 0 8px 18px rgba(34, 22, 63, 0.35);
+
+  transition:
+    opacity 0.3s ease,
+    text-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.schedule-action-button.update {
+  background: #348d77;
+}
+
+.schedule-action-button.delete {
+  background: #97344d;
+}
+
+.schedule-action-button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+
+  text-shadow:
+    0 0 6px #ffe6cc,
+    0 0 12px #ffe6cc;
+}
+
+/* =========================
+   HOME LOADING TEXT
+========================= */
+
+.home-loading {
+  position: absolute;
+  top: 329px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  color: var(--text-cream);
+  font-family: var(--font-serif);
+  font-size: 16px;
+  white-space: nowrap;
+
+  text-shadow:
+    0 0 10px var(--text-cream);
+
+  animation:
+    loadingGlitch 8s infinite,
+    cursorBlink 1s infinite;
+}
+
+@keyframes loadingGlitch {
+  0%,
+  90%,
+  100% {
+    opacity: 1;
+    transform: translateX(-50%);
+    filter: none;
+  }
+
+  91% {
+    opacity: 0.85;
+    transform:
+      translateX(calc(-50% - 2px))
+      skewX(-3deg);
+  }
+
+  92% {
+    opacity: 1;
+    transform:
+      translateX(calc(-50% + 3px))
+      skewX(2deg);
+  }
+
+  93% {
+    opacity: 0.7;
+    transform:
+      translateX(calc(-50% - 1px))
+      skewX(-1deg);
+  }
+
+  94% {
+    opacity: 1;
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes cursorBlink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0.85;
+  }
 }
 
 /* =========================
@@ -237,13 +642,11 @@ body {
   top: 0;
   left: -480px;
 
-  
   width: 480px;
   max-width: 80vw;
   height: 100vh;
 
   background: rgba(46, 36, 61, 0.5);
-
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 
@@ -270,7 +673,6 @@ body {
 
   border: none;
   background: transparent;
-
   cursor: pointer;
 }
 
@@ -315,12 +717,7 @@ body {
 
   color: #fdeedf;
   text-decoration: none;
-
-  font-family:
-    "DNP 秀英角ゴシック金 Std",
-    "Sawarabi Gothic",
-    sans-serif;
-
+  font-family: var(--font-jp);
   font-size: 41pt;
   font-weight: 400;
   line-height: 1;
@@ -338,7 +735,10 @@ body {
   align-items: flex-start;
 }
 
-/* Update / Delete */
+/* =========================
+   SIDEBAR SUBMENU
+========================= */
+
 .sidebar-submenu {
   display: flex;
   gap: 18pt;
@@ -371,20 +771,433 @@ body {
 }
 
 .sidebar-submenu a {
-  color: #c2966b;
+  color: var(--glow-gold);
   text-decoration: none;
-
-  font-family:
-    "DNP 秀英角ゴシック金 Std",
-    "Sawarabi Gothic",
-    sans-serif;
-
+  font-family: var(--font-jp);
   font-size: 18pt;
   line-height: 1;
 }
 
 .sidebar-submenu a:hover {
   opacity: 0.7;
+}
+
+/* =========================
+   HOME SECTION BUTTONS
+========================= */
+
+.home-section-buttons {
+  position: absolute;
+
+  /* 「my database...」から56px下 */
+  top: 401px;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 27px;
+}
+
+.home-section-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 218px;
+  height: 62px;
+
+  color: #dbad7e;
+  border: 2px solid #dbad7e;
+
+  font-family:
+    "DNP 秀英角ゴシック金 Std",
+    "Sawarabi Gothic",
+    sans-serif;
+  font-size: 14px;
+  line-height: 1;
+
+  text-decoration: none;
+
+  transition:
+    opacity 0.3s ease,
+    text-shadow 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.home-section-button:hover {
+  opacity: 0.9;
+
+  text-shadow:
+    0 0 6px #dbad7e,
+    0 0 12px #dbad7e;
+
+  box-shadow:
+    0 0 8px #dbad7e;
+}
+/* =========================
+   HOME GRAPH
+========================= */
+
+.home-graph {
+  position: absolute;
+  top: 550px;
+  left: 0;
+
+  width: 100%;
+  height: 90px;
+}
+
+.graph-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  border-bottom: 4px dotted #ffe6cc;
+}
+
+/* =========================
+   HOME FOOTER
+========================= */
+
+.home-footer {
+    position: absolute;
+    top: 654px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.home-footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 241px;
+  height: 34px;
+
+  color: #dbad7e;
+  border: 1px solid #dbad7e;
+
+  font-family:
+    "DNP 秀英角ゴシック金 Std",
+    "Sawarabi Gothic",
+    sans-serif;
+  font-size: 16px;
+  line-height: 1;
+
+  text-decoration: none;
+
+  transition:
+    opacity 0.3s ease,
+    text-shadow 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.home-footer a:hover {
+  opacity: 0.9;
+  text-shadow:
+    0 0 6px #dbad7e,
+    0 0 12px #dbad7e;
+
+  box-shadow:
+    0 0 8px #dbad7e;
+}
+
+/* =========================
+   SCHEDULE UPDATE PANEL
+========================= */
+
+.schedule-panel-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: transparent;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity .3s ease,
+    visibility .3s ease;
+
+  z-index: 55;
+}
+
+.schedule-panel-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.schedule-update-panel {
+  position: fixed;
+  top: 16px;
+  right: -700px;
+
+  width: 660px;
+  height: calc(100vh - 32px);
+
+  padding: 54px 60px;
+
+  background: rgba(34, 22, 63, 0.92);
+  border-radius: 24px;
+
+  z-index: 60;
+
+  transition: right 0.5s ease;
+}
+
+.schedule-update-panel.active {
+  right: 24px;
+}
+
+.schedule-update-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.schedule-input {
+  width: 100%;
+  height: 53px;
+
+  padding: 0 18px;
+
+  border: none;
+  outline: none;
+
+  background: rgba(80, 75, 88, 0.6);
+
+  color: #ffe6cc;
+  font-family: var(--font-jp);
+  font-size: 26px;
+  color-scheme: dark;
+}
+
+.schedule-input::placeholder,
+.schedule-textarea::placeholder {
+  color: rgba(255, 230, 204, 0.55);
+}
+
+
+.schedule-date-input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(85%) sepia(19%) saturate(507%) hue-rotate(334deg);
+}
+
+/* 時間指定時の日付入力欄 */
+.schedule-date-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.schedule-time-control-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.schedule-time-toggle {
+  display: flex;
+  gap: 22px;
+
+  color: rgba(255, 230, 204, 0.6);
+  font-family: var(--font-jp);
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.schedule-time-row {
+  display: none;
+  align-items: center;
+  gap: 10px;
+
+  color: #ffe6cc;
+  font-family: var(--font-jp);
+}
+
+.schedule-time-row.active {
+  display: flex;
+}
+
+.schedule-time-input {
+  width: 96px;
+  height: 32px;
+
+  padding: 0 8px;
+
+  border: none;
+  outline: none;
+
+  background: rgba(80, 75, 88, 0.6);
+  color: #ffe6cc;
+
+  font-family: var(--font-jp);
+  font-size: 14px;
+}
+
+.schedule-category {
+  display: flex;
+  align-items: center;
+  gap: 42px;
+
+  color: rgba(255, 230, 204, 0.55);
+  font-family: var(--font-gothic);
+  font-size: 32px;
+}
+
+.schedule-category input {
+  display: none;
+}
+
+.schedule-category label span {
+  cursor: pointer;
+}
+
+.schedule-category input:checked + span {
+  color: #ffffff;
+  text-shadow:
+    0 0 6px #ffffff,
+    0 0 12px #ffffff;
+}
+
+.category-slash {
+  color: rgba(255, 230, 204, 0.55);
+}
+
+.schedule-textarea {
+  width: 100%;
+  height: 240px;
+
+  padding: 14px 40px;
+
+  border: none;
+  outline: none;
+  resize: none;
+
+  background: rgba(80, 75, 88, 0.6);
+
+  color: #ffe6cc;
+  font-family: var(--font-jp);
+  font-size: 22px;
+}
+
+.schedule-submit-button {
+  width: 100%;
+  height: 46px;
+
+  border: none;
+  background: #348d77;
+
+  color: #ffe6cc;
+  font-family: var(--font-gothic);
+  font-size: 30px;
+
+  cursor: pointer;
+}
+
+.schedule-date-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.schedule-time-toggle {
+  display: flex;
+  gap: 22px;
+
+  color: rgba(255, 230, 204, 0.6);
+  font-family: var(--font-jp);
+  font-size: 16px;
+}
+
+.schedule-time-toggle input {
+  display: none;
+}
+
+.schedule-time-toggle span {
+  cursor: pointer;
+}
+
+.schedule-time-toggle input:checked + span {
+  color: #ffe6cc;
+  text-shadow:
+    0 0 6px #ffe6cc,
+    0 0 12px #ffe6cc;
+}
+
+.schedule-time-row {
+  display: none;
+  align-items: center;
+  gap: 12px;
+
+  color: #ffe6cc;
+  font-family: var(--font-jp);
+}
+
+.schedule-time-row.active {
+  display: flex;
+}
+
+.schedule-time-input {
+  width: 120px;
+  height: 38px;
+
+  padding: 0 10px;
+
+  border: none;
+  outline: none;
+
+  background: rgba(80, 75, 88, 0.6);
+  color: #ffe6cc;
+
+  font-family: var(--font-jp);
+  font-size: 16px;
+}
+
+/* 時間指定モード */
+
+.schedule-category.compact {
+  gap: 28px;
+  font-size: 24px;
+
+  transition: all 0.25s ease;
+}
+
+.schedule-category.compact .category-slash {
+  font-size: 24px;
+}
+
+/* =========================
+   SCHEDULE UPDATE OPEN LAYOUT
+========================= */
+
+.page-schedule .brand-title,
+.page-schedule .page-subtitle,
+.page-schedule .schedule-card {
+  transition:
+    left 0.45s ease,
+    transform 0.45s ease;
+}
+
+/* Updateフォーム表示中 */
+.page-schedule.update-panel-open .brand-title {
+  left: 28%;
+  transform: translateX(-50%);
+}
+
+.page-schedule.update-panel-open .page-subtitle {
+  left: 28%;
+  transform: translateX(-50%);
+}
+
+.page-schedule.update-panel-open .schedule-card {
+  left: 77px;
+  transform: translateX(0);
 }
 
 /* =========================
@@ -400,8 +1213,6 @@ body {
 
   .brand-title {
     top: 64px;
-    left: 50%;
-    transform: translateX(-50%);
   }
 
   .brand-sub {

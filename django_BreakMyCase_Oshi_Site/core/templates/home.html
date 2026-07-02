@@ -5,4 +5,35 @@
 {% block body_class %}page-home{% endblock %}
 
 {% block content %}
+
+<div class="home-loading" id="homeLoading">
+    my database...now loading_
+</div>
+
+<div class="home-section-buttons">
+    <a href="{% url 'schedule_list' %}" class="home-section-button">
+        SCHEDULE
+    </a>
+
+    <a href="{% url 'memo_list' %}" class="home-section-button">
+        MEMO
+    </a>
+
+    <a href="{% url 'memory_list' %}" class="home-section-button">
+        MEMORY
+    </a>
+</div>
+
+<div class="home-graph">
+    <div class="graph-line"></div>
+
+    
+</div>
+
+<footer class="home-footer">
+    <a href="https://x.com/breakmycase" target="_blank" rel="noopener noreferrer">
+        BREAK MY CASE /X
+    </a>
+</footer>
+
 {% endblock %}
