@@ -19,11 +19,11 @@
     <div class="deco-line deco-line-bottom-left-2"></div>
 
     <div class="deco-dots-square">
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
 
-    <span></span><span></span><span></span><span></span><span></span>
-    <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
 
     </div>
     <div class="deco-dots-circle"></div>
@@ -40,26 +40,38 @@
             <li>
                 <span class="schedule-date">2026.05.07</span>
                 <span class="schedule-title">NIGHT HIKE @Shibuya</span>
+                <button class="schedule-delete-item" aria-label="削除">
+                </button>
             </li>
             <li>
                 <span class="schedule-date">2026.05.07</span>
                 <span class="schedule-title">先着申込</span>
+                <button class="schedule-delete-item" aria-label="削除">
+                </button>
             </li>
             <li>
                 <span class="schedule-date">2026.05.07</span>
                 <span class="schedule-title">セブンネット予約開始</span>
+                <button class="schedule-delete-item" aria-label="削除">
+                </button>
             </li>
             <li>
                 <span class="schedule-date">2026.05.07</span>
                 <span class="schedule-title">セブンネットプリ開始</span>
+                <button class="schedule-delete-item" aria-label="削除">
+                </button>
             </li>
             <li>
                 <span class="schedule-date">2026.05.07</span>
                 <span class="schedule-title">二周年グッズストア</span>
+                <button class="schedule-delete-item" aria-label="削除">
+                </button>
             </li>
             <li>
                 <span class="schedule-date">2026.05.07</span>
                 <span class="schedule-title">NITE HIKE@Shibuya</span>
+                <button class="schedule-delete-item" aria-label="削除">
+                </button>
             </li>
         </ul>
     </div>
@@ -75,11 +87,7 @@
         <form class="schedule-update-form">
 
             <div class="schedule-date-row">
-                <input
-                    type="date"
-                    class="schedule-input schedule-date-input"
-                    value="2026-05-09"
-                >
+                <input type="date" class="schedule-input schedule-date-input" value="2026-05-09">
 
                 <div class="schedule-time-control-row">
                     <div class="schedule-time-toggle">
@@ -102,12 +110,7 @@
                 </div>
             </div>
 
-            <input
-                type="text"
-                class="schedule-input"
-                placeholder="イベント名"
-                maxlength="100"
-            >
+            <input type="text" class="schedule-input" placeholder="イベント名" maxlength="100">
 
             <div class="schedule-category">
                 <label>
@@ -123,17 +126,33 @@
                 </label>
             </div>
 
-            <textarea
-                class="schedule-textarea"
-                placeholder="申込方法、持ち物など"
-                maxlength="200"
-            ></textarea>
+            <textarea class="schedule-textarea" placeholder="申込方法、持ち物など" maxlength="200"></textarea>
 
             <button type="button" class="schedule-submit-button">
                 Update
             </button>
 
         </form>
+    </div>
+
+
+    <div class="schedule-delete-modal-overlay" id="scheduleDeleteModalOverlay"></div>
+
+    <div class="schedule-delete-modal" id="scheduleDeleteModal">
+        <p class="schedule-delete-message" id="scheduleDeleteMessage">
+            「2026.05.07　二周年グッズストア」を<br>
+            削除しますか？
+        </p>
+
+        <div class="schedule-delete-modal-buttons">
+            <button type="button" class="delete-confirm-yes" id="deleteConfirmYes">
+                はい
+            </button>
+
+            <button type="button" class="delete-confirm-no" id="deleteConfirmNo">
+                いいえ
+            </button>
+        </div>
     </div>
 
 </section>

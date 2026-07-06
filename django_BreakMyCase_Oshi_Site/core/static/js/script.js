@@ -208,3 +208,151 @@ if (
   schedulePanelOverlay.classList.add("active");
   document.body.classList.add("update-panel-open");
 }
+
+// =========================
+// SCHEDULE DELETE CONFIRM
+// =========================
+
+const scheduleDeleteItems = document.querySelectorAll(
+  ".schedule-delete-item"
+);
+
+const scheduleDeleteModalOverlay = document.getElementById(
+  "scheduleDeleteModalOverlay"
+);
+
+const scheduleDeleteModal = document.getElementById(
+  "scheduleDeleteModal"
+);
+
+const scheduleDeleteMessage = document.getElementById(
+  "scheduleDeleteMessage"
+);
+
+const deleteConfirmYes = document.getElementById("deleteConfirmYes");
+const deleteConfirmNo = document.getElementById("deleteConfirmNo");
+
+let targetDeleteItem = null;
+
+function openDeleteModal(item) {
+  targetDeleteItem = item;
+
+  const date = item.querySelector(".schedule-date").textContent;
+  const title = item.querySelector(".schedule-title").textContent;
+
+  scheduleDeleteMessage.innerHTML =
+    `「${date}　${title}」を<br>削除しますか？`;
+
+  scheduleDeleteModalOverlay.classList.add("active");
+  scheduleDeleteModal.classList.add("active");
+}
+
+function closeDeleteModal() {
+  scheduleDeleteModalOverlay.classList.remove("active");
+  scheduleDeleteModal.classList.remove("active");
+  targetDeleteItem = null;
+}
+
+scheduleDeleteItems.forEach((button) => {
+  button.addEventListener("click", () => {
+    const listItem = button.closest("li");
+    openDeleteModal(listItem);
+  });
+});
+
+if (deleteConfirmNo) {
+  deleteConfirmNo.addEventListener("click", closeDeleteModal);
+}
+
+if (scheduleDeleteModalOverlay) {
+  scheduleDeleteModalOverlay.addEventListener("click", closeDeleteModal);
+}
+
+if (deleteConfirmYes) {
+  deleteConfirmYes.addEventListener("click", () => {
+    if (targetDeleteItem) {
+      targetDeleteItem.remove();
+    }
+
+    closeDeleteModal();
+  });
+}
+
+document.body.classList.add("delete-mode");
+document.body.classList.remove("delete-mode");
+// =========================
+// SCHEDULE DELETE
+// =========================
+
+const scheduleDeleteButton = document.querySelector(
+  ".schedule-action-button.delete"
+);
+
+const scheduleList = document.querySelector(".schedule-list");
+
+const deleteModal = document.getElementById("scheduleDeleteModal");
+const deleteOverlay = document.getElementById("scheduleDeleteModalOverlay");
+const deleteMessage = document.getElementById("scheduleDeleteMessage");
+
+const deleteYes = document.getElementById("deleteConfirmYes");
+const deleteNo = document.getElementById("deleteConfirmNo");
+
+let targetPost = null;
+
+// 右下Deleteボタン：Deleteモード切り替え
+if (scheduleDeleteButton) {
+  scheduleDeleteButton.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    scheduleUpdatePanel.classList.remove("active");
+    schedulePanelOverlay.classList.remove("active");
+    document.body.classList.remove("update-panel-open");
+
+    document.body.classList.toggle("delete-mode");
+  });
+}
+
+// 投稿一覧内の×ボタン
+if (scheduleList) {
+  scheduleList.addEventListener("click", (e) => {
+    const deleteButton = e.target.closest(".schedule-delete-item");
+
+    if (!deleteButton) return;
+
+    targetPost = deleteButton.closest("li");
+
+    const title = targetPost
+      .querySelector(".schedule-title")
+      .textContent;
+
+    deleteMessage.innerHTML =
+      `「${title}」を<br>削除しますか？`;
+
+    deleteOverlay.classList.add("active");
+    deleteModal.classList.add("active");
+  });
+}
+
+function closeDeleteModal() {
+  deleteOverlay.classList.remove("active");
+  deleteModal.classList.remove("active");
+  targetPost = null;
+}
+
+if (deleteYes) {
+  deleteYes.addEventListener("click", () => {
+    if (targetPost) {
+      targetPost.remove();
+    }
+
+    closeDeleteModal();
+  });
+}
+
+if (deleteNo) {
+  deleteNo.addEventListener("click", closeDeleteModal);
+}
+
+if (deleteOverlay) {
+  deleteOverlay.addEventListener("click", closeDeleteModal);
+}

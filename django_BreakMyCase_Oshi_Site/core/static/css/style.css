@@ -1199,6 +1199,147 @@ html {
   left: 77px;
   transform: translateX(0);
 }
+/* =========================
+   SCHEDULE DELETE MODE
+========================= */
+
+.schedule-list li {
+  position: relative;
+}
+
+.schedule-delete-item {
+  position: absolute;
+  right: -28px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 31.8px;
+  height: 31.8px;
+
+  background: #a4233f;
+  border: none;
+  cursor: pointer;
+
+  display: none;
+}
+
+.schedule-delete-item::before,
+.schedule-delete-item::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 20.3px;
+  height: 2pt;
+
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.schedule-delete-item::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.schedule-delete-item::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+body.delete-mode .schedule-delete-item {
+  display: block;
+}
+
+/* =========================
+   SCHEDULE DELETE MODAL
+========================= */
+
+.schedule-delete-modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(34, 22, 63, 0.45);
+
+  opacity: 0;
+  visibility: hidden;
+
+  z-index: 80;
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.schedule-delete-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.schedule-delete-modal {
+  position: fixed;
+  top: 269px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 811px;
+  min-height: 230px;
+
+  background: #198b6e;
+
+  opacity: 0;
+  visibility: hidden;
+
+  z-index: 81;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 52px 60px 42px;
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.schedule-delete-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.schedule-delete-message {
+  color: #fdeedf;
+  font-family: var(--font-jp);
+  font-size: 26px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.schedule-delete-modal-buttons {
+  margin-top: 33px;
+
+  display: flex;
+  gap: 110px;
+}
+
+.delete-confirm-yes,
+.delete-confirm-no {
+  width: 230.4px;
+  height: 65.3px;
+
+  border: none;
+  cursor: pointer;
+
+  color: #ffe6cc;
+  font-family: var(--font-jp);
+  font-size: 22px;
+}
+
+.delete-confirm-yes {
+  background: #a4233f;
+}
+
+.delete-confirm-no {
+  background: #596260;
+}
 
 /* =========================
    RESPONSIVE
