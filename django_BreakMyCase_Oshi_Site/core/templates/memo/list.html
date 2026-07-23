@@ -5,7 +5,207 @@
 {% block body_class %}page-memo{% endblock %}
 
 {% block content %}
-<div class="page-subtitle">
-  memo
+
+
+<!-- 背景装飾 -->
+<div class="memo-bg-deco">
+
+    <!-- 1：左上 -->
+    <div class="memo-deco-line memo-line-left-top-1"></div>
+    <div class="memo-deco-line memo-line-left-top-2"></div>
+
+    <!-- 2：右上 -->
+    <div class="memo-deco-line memo-line-right-top-1"></div>
+    <div class="memo-deco-line memo-line-right-top-2"></div>
+
+    <!-- 3：左下 -->
+    <div class="memo-deco-line memo-line-left-bottom-1"></div>
+    <div class="memo-deco-line memo-line-left-bottom-2"></div>
+
 </div>
+
+<div class="page-subtitle">
+    memo
+</div>
+
+<section class="memo-page">
+
+    <!-- =========================
+         メモ一覧
+    ========================== -->
+    <div class="memo-list-area" id="memoListArea">
+
+        <div class="memo-scroll-line">
+            <div class="memo-scroll-thumb"></div>
+        </div>
+
+        <div class="memo-list">
+
+            <article class="memo-card">
+                <button
+                    type="button"
+                    class="memo-delete-item"
+                    aria-label="削除"
+                ></button>
+
+                <div class="memo-card-date">
+                    <span>2026.05.07</span>
+                    <span>12:05:10</span>
+                </div>
+
+                <p class="memo-card-text">
+                    二周年イベントのビジュ超最高だった！！
+                </p>
+            </article>
+
+            <article class="memo-card">
+                <button
+                    type="button"
+                    class="memo-delete-item"
+                    aria-label="削除"
+                ></button>
+
+                <div class="memo-card-date">
+                    <span>2026.05.07</span>
+                    <span>12:05:10</span>
+                </div>
+
+                <p class="memo-card-text">
+                    二周年イベントのビジュ超最高だった！！
+                </p>
+            </article>
+
+            <article class="memo-card">
+                <button
+                    type="button"
+                    class="memo-delete-item"
+                    aria-label="削除"
+                ></button>
+
+                <div class="memo-card-date">
+                    <span>2026.05.07</span>
+                    <span>12:05:10</span>
+                </div>
+
+                <p class="memo-card-text">
+                    二周年イベントのビジュ超最高だった！！
+                </p>
+            </article>
+
+            <article class="memo-card">
+                <button
+                    type="button"
+                    class="memo-delete-item"
+                    aria-label="削除"
+                ></button>
+
+                <div class="memo-card-date">
+                    <span>2026.05.07</span>
+                    <span>12:05:10</span>
+                </div>
+
+                <p class="memo-card-text">
+                    二周年イベントのビジュ超最高だった！！
+                </p>
+            </article>
+
+            <article class="memo-card">
+                <button
+                    type="button"
+                    class="memo-delete-item"
+                    aria-label="削除"
+                ></button>
+
+                <div class="memo-card-date">
+                    <span>2026.05.07</span>
+                    <span>12:05:10</span>
+                </div>
+
+                <p class="memo-card-text">
+                    二周年イベントのビジュ超最高だった！！
+                </p>
+            </article>
+
+        </div>
+    </div>
+
+
+    <!-- =========================
+         Updateフォーム
+    ========================== -->
+    <div class="memo-update-area" id="memoUpdateArea" hidden>
+
+        <form class="memo-update-form">
+
+            <input
+                type="text"
+                class="memo-title-input"
+                placeholder="タイトル"
+                maxlength="100"
+            >
+
+            <div class="memo-content-box">
+
+                <textarea
+                    class="memo-content-input"
+                    placeholder="考察、感想、思いついたこと など"
+                    maxlength="1000"
+                ></textarea>
+
+                <button
+                    type="button"
+                    class="memo-image-button"
+                    aria-label="画像を追加"
+                >
+                    <span class="memo-image-icon"></span>
+                </button>
+
+            </div>
+
+            <button
+                type="button"
+                class="memo-submit-button"
+            >
+                Update
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- =========================
+         右下ボタン
+    ========================== -->
+    <div class="memo-action-buttons">
+
+        <button
+            type="button"
+            class="memo-action-button update"
+            id="memoUpdateButton"
+        >
+            Update
+        </button>
+
+        <button
+            type="button"
+            class="memo-action-button delete"
+            id="memoDeleteButton"
+        >
+            Delete
+        </button>
+
+        <button
+            type="button"
+            class="memo-action-button cancel"
+            id="memoCancelButton"
+            hidden
+        >
+            Cancel
+        </button>
+
+    </div>
+
+</section>
+
 {% endblock %}

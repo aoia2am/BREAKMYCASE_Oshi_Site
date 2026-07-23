@@ -371,3 +371,129 @@ if (deleteConfirmYes) {
     closeDeleteModal();
   });
 }
+
+// =========================
+// MEMO PAGE
+// =========================
+
+const memoListArea = document.getElementById("memoListArea");
+const memoUpdateArea = document.getElementById("memoUpdateArea");
+
+const memoUpdateButton = document.getElementById(
+  "memoUpdateButton"
+);
+
+const memoDeleteButton = document.getElementById(
+  "memoDeleteButton"
+);
+
+const memoCancelButton = document.getElementById(
+  "memoCancelButton"
+);
+
+
+// =========================
+// MEMO UPDATE MODE
+// =========================
+
+if (
+  memoUpdateButton &&
+  memoDeleteButton &&
+  memoCancelButton &&
+  memoListArea &&
+  memoUpdateArea
+) {
+  memoUpdateButton.addEventListener("click", () => {
+
+    // 一覧を隠す
+    memoListArea.hidden = true;
+
+    // 入力フォームを表示
+    memoUpdateArea.hidden = false;
+
+    // Update / Deleteを隠す
+    memoUpdateButton.hidden = true;
+    memoDeleteButton.hidden = true;
+
+    // Cancelを表示
+    memoCancelButton.hidden = false;
+
+    // 削除モードは解除
+    document.body.classList.remove("memo-delete-mode");
+  });
+}
+
+
+// =========================
+// MEMO DELETE MODE
+// =========================
+
+if (
+  memoDeleteButton &&
+  memoUpdateButton &&
+  memoCancelButton
+) {
+  memoDeleteButton.addEventListener("click", () => {
+
+    // 削除用の×を表示
+    document.body.classList.add("memo-delete-mode");
+
+    // Update / Deleteを隠す
+    memoUpdateButton.hidden = true;
+    memoDeleteButton.hidden = true;
+
+    // Cancelを表示
+    memoCancelButton.hidden = false;
+  });
+}
+
+
+// =========================
+// MEMO CANCEL
+// =========================
+
+if (
+  memoCancelButton &&
+  memoUpdateButton &&
+  memoDeleteButton &&
+  memoListArea &&
+  memoUpdateArea
+) {
+  memoCancelButton.addEventListener("click", () => {
+
+    // Updateフォームを非表示
+    memoUpdateArea.hidden = true;
+
+    // 一覧を表示
+    memoListArea.hidden = false;
+
+    // 削除モード解除
+    document.body.classList.remove("memo-delete-mode");
+
+    // Cancelを非表示
+    memoCancelButton.hidden = true;
+
+    // 通常ボタンを再表示
+    memoUpdateButton.hidden = false;
+    memoDeleteButton.hidden = false;
+  });
+}
+
+
+// =========================
+// MEMO 仮削除
+// =========================
+
+const memoDeleteItems = document.querySelectorAll(
+  ".memo-delete-item"
+);
+
+memoDeleteItems.forEach((deleteButton) => {
+  deleteButton.addEventListener("click", () => {
+    const memoCard = deleteButton.closest(".memo-card");
+
+    if (memoCard) {
+      memoCard.remove();
+    }
+  });
+});
