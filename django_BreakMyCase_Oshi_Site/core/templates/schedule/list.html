@@ -37,42 +37,21 @@
 
     <div class="schedule-card">
         <ul class="schedule-list">
+            {% for schedule in schedules %}
             <li>
-                <span class="schedule-date">2026.05.07</span>
-                <span class="schedule-title">NIGHT HIKE @Shibuya</span>
-                <button class="schedule-delete-item" aria-label="削除">
-                </button>
+                <span class="schedule-date">
+                    {{ schedule.date|date:"Y.m.d" }}
+                </span>
+
+                <span class="schedule-title">
+                    {{ schedule.title }}
+                </span>
+
+                <button class="schedule-delete-item"></button>
             </li>
-            <li>
-                <span class="schedule-date">2026.05.07</span>
-                <span class="schedule-title">先着申込</span>
-                <button class="schedule-delete-item" aria-label="削除">
-                </button>
-            </li>
-            <li>
-                <span class="schedule-date">2026.05.07</span>
-                <span class="schedule-title">セブンネット予約開始</span>
-                <button class="schedule-delete-item" aria-label="削除">
-                </button>
-            </li>
-            <li>
-                <span class="schedule-date">2026.05.07</span>
-                <span class="schedule-title">セブンネットプリ開始</span>
-                <button class="schedule-delete-item" aria-label="削除">
-                </button>
-            </li>
-            <li>
-                <span class="schedule-date">2026.05.07</span>
-                <span class="schedule-title">二周年グッズストア</span>
-                <button class="schedule-delete-item" aria-label="削除">
-                </button>
-            </li>
-            <li>
-                <span class="schedule-date">2026.05.07</span>
-                <span class="schedule-title">NITE HIKE@Shibuya</span>
-                <button class="schedule-delete-item" aria-label="削除">
-                </button>
-            </li>
+            {% empty %}
+            <li>予定がありません</li>
+            {% endfor %}
         </ul>
     </div>
 
