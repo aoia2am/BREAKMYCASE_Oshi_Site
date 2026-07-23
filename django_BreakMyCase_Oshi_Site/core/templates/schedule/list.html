@@ -47,26 +47,41 @@
                     {{ schedule.title }}
                 </span>
 
-                <button class="schedule-delete-item"></button>
+                <button class="schedule-delete-item" aria-label="削除"></button>
             </li>
+
             {% empty %}
-            <li>予定がありません</li>
+            <li>
+                <span class="schedule-title">予定がありません</span>
+            </li>
             {% endfor %}
         </ul>
     </div>
 
     <div class="schedule-action-buttons">
-        <a href="#" class="schedule-action-button update">Update</a>
-        <a href="#" class="schedule-action-button delete">Delete</a>
+
+        <a href="#" class="schedule-action-button update" id="scheduleUpdateButton">
+            Update
+        </a>
+
+        <a href="#" class="schedule-action-button delete" id="scheduleDeleteButton">
+            Delete
+        </a>
+
+        <button type="button" class="schedule-action-button cancel" id="scheduleCancelButton" hidden>
+            Cancel
+        </button>
+
     </div>
 
     <div class="schedule-panel-overlay" id="schedulePanelOverlay"></div>
 
     <div class="schedule-update-panel" id="scheduleUpdatePanel">
-        <form class="schedule-update-form">
+        <form class="schedule-update-form" method="POST">
+            {% csrf_token %}
 
             <div class="schedule-date-row">
-                <input type="date" class="schedule-input schedule-date-input" value="2026-05-09">
+                <input type="date" name="date" class="schedule-input schedule-date-input" required>
 
                 <div class="schedule-time-control-row">
                     <div class="schedule-time-toggle">
@@ -82,14 +97,16 @@
                     </div>
 
                     <div class="schedule-time-row" id="scheduleTimeRow">
-                        <input type="time" class="schedule-time-input">
+                        <input type="time" name="start_time" class="schedule-time-input">
+
                         <span>〜</span>
-                        <input type="time" class="schedule-time-input">
+
+                        <input type="time" name="end_time" class="schedule-time-input">
                     </div>
                 </div>
             </div>
 
-            <input type="text" class="schedule-input" placeholder="イベント名" maxlength="100">
+            <input type="text" name="title" class="schedule-input" placeholder="イベント名" maxlength="100" required>
 
             <div class="schedule-category">
                 <label>
@@ -105,12 +122,11 @@
                 </label>
             </div>
 
-            <textarea class="schedule-textarea" placeholder="申込方法、持ち物など" maxlength="200"></textarea>
+            <textarea name="memo" class="schedule-textarea" placeholder="申込方法、持ち物など" maxlength="200"></textarea>
 
-            <button type="button" class="schedule-submit-button">
+            <button type="submit" class="schedule-submit-button">
                 Update
             </button>
-
         </form>
     </div>
 
